@@ -1,4 +1,4 @@
-# Исходники сайта [gitops.ru](https://gitops.ru)
+# Исходники сайта [kuberops.ru](https://kuberops.ru)
 
 <br/>
 
@@ -8,8 +8,8 @@
 
 ```
 $ cd ~
-$ mkdir -p gitops.ru && cd gitops.ru
-$ git clone --depth=1 https://github.com/webmakaka/gitops.ru.git .
+$ mkdir -p kuberops.ru && cd kuberops.ru
+$ git clone --depth=1 https://github.com/webmakaka/kuberops.ru.git .
 $ docker-compose up
 ```
 
@@ -23,10 +23,10 @@ $ docker-compose up
 
 <br/>
 
-### Запустить gitops.ru на своем хосте с использованием docker контейнера:
+### Запустить kuberops.ru на своем хосте с использованием docker контейнера:
 
 ```
-$ docker run -i -t -p 80:80 --name gitops.ru marley/gitops.ru
+$ docker run -i -t -p 80:80 --name kuberops.ru marley/kuberops.ru
 ```
 
 <br/>
@@ -34,15 +34,15 @@ $ docker run -i -t -p 80:80 --name gitops.ru marley/gitops.ru
 ### Как сервис
 
 ```
-$ sudo vi /etc/systemd/system/gitops.ru.service
+$ sudo vi /etc/systemd/system/kuberops.ru.service
 ```
 
-вставить содержимое файла gitops.ru.service
+вставить содержимое файла kuberops.ru.service
 
 ```
-$ sudo systemctl enable gitops.ru.service
-$ sudo systemctl start  gitops.ru.service
-$ sudo systemctl status gitops.ru.service
+$ sudo systemctl enable kuberops.ru.service
+$ sudo systemctl start  kuberops.ru.service
+$ sudo systemctl status kuberops.ru.service
 ```
 
 http://localhost:4006
@@ -55,5 +55,5 @@ http://localhost:4006
 
 **Marley**
 
-Any questions in english: <a href="https://gitops.ru/chat/">Telegram Chat</a>  
-Любые вопросы на русском: <a href="https://gitops.ru/chat/">Телеграм чат</a>
+Any questions in english: <a href="https://kuberops.ru/chat/">Telegram Chat</a>  
+Любые вопросы на русском: <a href="https://kuberops.ru/chat/">Телеграм чат</a>
