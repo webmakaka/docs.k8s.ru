@@ -4,7 +4,7 @@ title: GitOps
 permalink: /
 ---
 
-# GitOps
+# KuberOps
 
 <br/>
 
