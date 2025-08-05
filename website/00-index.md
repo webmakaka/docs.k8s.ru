@@ -1,10 +1,10 @@
 ---
 layout: page
-title: GitOps
+title: Kubernetes (k8s)
 permalink: /
 ---
 
-# KuberOps
+# Kubernetes (k8s)
 
 <br/>
 
