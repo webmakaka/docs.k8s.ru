@@ -44,7 +44,7 @@ The pod-labeler deployment creates a single pod that watches all other pods in t
 
 <br/>
 
-### [Install Terraform](//kuberops.ru/terraform/setup//)
+### [Install Terraform](//docs.k8s.ru/terraform/setup//)
 
 <br>
 

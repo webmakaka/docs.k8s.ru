@@ -10,4 +10,4 @@ permalink: /devops/containers/kubernetes/minikube/setup/
 
 # Инсталляция и подготовка minikube для работы в ubuntu 20.04.1
 
-### [Перенесено сюда](//kuberops.ru//containers/kubernetes/minikube/setup/)
+### [Перенесено сюда](//docs.k8s.ru//containers/kubernetes/minikube/setup/)

@@ -21,7 +21,7 @@ https://www.qwiklabs.com/focuses/5539?parent=catalog
 
 <br/>
 
-### [Install Terraform](//kuberops.ru/terraform/setup//)
+### [Install Terraform](//docs.k8s.ru/terraform/setup//)
 
 <br/>
 

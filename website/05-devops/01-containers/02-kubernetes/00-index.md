@@ -10,7 +10,7 @@ permalink: /devops/containers/kubernetes/
 
 <br/>
 
-### [Инсталляция клиента для работы с kubernetes кластером (kubectl)](//kuberops.ru/containers/kubernetes/tools/kubectl/)
+### [Инсталляция клиента для работы с kubernetes кластером (kubectl)](//docs.k8s.ru/containers/kubernetes/tools/kubectl/)
 
 <br/>
 
@@ -44,7 +44,7 @@ https://github.com/webmakaka/vagrant-kubernetes-3-node-cluster-centos7
 
 ### [Kubernetes Package Management (Kustomize, Helm)](/devops/containers/kubernetes/packages/)
 
-### [Service Mesh (ISTIO)](//kuberops.ru/courses/containers/kubernetes/service-mesh/istio/)
+### [Service Mesh (ISTIO)](//docs.k8s.ru/courses/containers/kubernetes/service-mesh/istio/)
 
 <br/>
 

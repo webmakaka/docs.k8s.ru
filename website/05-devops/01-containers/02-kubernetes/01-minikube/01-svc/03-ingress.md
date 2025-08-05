@@ -8,4 +8,4 @@ permalink: /devops/containers/kubernetes/minikube/svc/ingress/
 
 # Создание службы Ingress
 
-### [Перенесено сюда](//kuberops.ru/containers/kubernetes/svc/ingress/)
+### [Перенесено сюда](//docs.k8s.ru/containers/kubernetes/svc/ingress/)

@@ -134,7 +134,7 @@ https://docs.docker.com/engine/userguide/networking/
 
 ### Self-hosted Registry (Свой аналог dockerhub)
 
-[Self-hosted Registry](//kuberops.ru/containers/registry/)
+[Self-hosted Registry](//docs.k8s.ru/containers/registry/)
 
 <br/>
 

@@ -8,4 +8,4 @@ permalink: /devops/containers/kubernetes/minikube/svc/nodeport/
 
 # Создание службы Nodeport
 
-### [Перенесено сюда](//kuberops.ru/containers/kubernetes/svc/nodeport/)
+### [Перенесено сюда](//docs.k8s.ru/containers/kubernetes/svc/nodeport/)

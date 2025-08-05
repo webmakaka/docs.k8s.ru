@@ -33,7 +33,7 @@ Within the cluster, provision three workloads:
 
 <br/>
 
-### [Install Terraform](//kuberops.ru/terraform/setup//)
+### [Install Terraform](//docs.k8s.ru/terraform/setup//)
 
 <br>
 

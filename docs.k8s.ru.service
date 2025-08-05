@@ -1,0 +1,21 @@
+[Unit]
+Description=docs.k8s.ru
+
+Requires=docker.service
+After=docker.service
+
+[Service]
+
+Restart=always
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill docs.k8s.ru
+ExecStartPre=-/usr/bin/docker rm docs.k8s.ru
+ExecStartPre=-/usr/bin/docker pull marley/docs.k8s.ru:latest
+ExecStart=/bin/sh -c '/usr/bin/docker run --name docs.k8s.ru   \
+ -p 4006:80                        \
+ marley/docs.k8s.ru'
+ExecStop=-/usr/bin/docker kill docs.k8s.ru
+ExecStop=-/usr/bin/docker rm docs.k8s.ru
+
+[Install]
+WantedBy=multi-user.target
