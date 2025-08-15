@@ -14,50 +14,45 @@ permalink: /
 
 Можете предложить что-то интересное для изучения!
 
-<br/>
-
-![What is GitOps](/img/gitops.png 'What is GitOps'){: .center-image }
-
-<!-- <br/>
-<br/>
-
-### [[Book][Md Nahidul Kibria] Argo CD and Argo Workflows on Kubernetes: GitOps, workflow automation, and progressive delivery with Argo Rollouts [ENG, 2025]](/books/ci-cd/argo-cd/argo-cd-and-argo-workflows-on-kubernetes/)
 
 <br/>
 
-![Argo CD and Argo Workflows on Kubernetes: GitOps, workflow automation, and progressive delivery with Argo Rollouts ](/img/books/covers/argo-cd-and-argo-workflows-on-kubernetes.jpg 'Argo CD and Argo Workflows on Kubernetes: GitOps, workflow automation, and progressive delivery with Argo Rollouts '){: .center-image } -->
+### [Локальная установка kubernetes в linux](/tools/containers/kubernetes/setup/)
+
+### [Kubernetes сервисы](/tools/containers/kubernetes/svc/)
+
+### [Инструменты для работы с Kubernetes](/tools/containers/kubernetes/utils/)
 
 <br/>
 
-### [[Book][Natale Vinto] GitOps Cookbook: Kubernetes Automation in Practice [ENG, 2023]](/books/gitops/gitops-cookbook/)
+### Коды выхода
+
+Коды выхода контейнера используются обработчиками контейнеров, когда контейнер завершает работу, чтобы сообщить, почему он был завершен
+
+Сбои контейнеров в Kubernetes являются одной из наиболее распространенных причин перезапусков модулей, и понимание кодов выхода контейнера может помочь добраться до основной причины сбоев при устранении неполадок
 
 <br/>
 
-Предлагаю разбирать, улучшать, обновлять. Вроде интересная книга. Есть что позапускать. Часть конфигов только в pdf и не все работает. Прислыайте толковые PR.
+**Наиболее распространенные коды выхода:**
 
-<br/>
+• 0 - Намеренно остановлено - Используется разработчиками для указания того, что контейнер был автоматически остановлен
 
-[![GitOps Cookbook](/img/books/covers/gitops-cookbook-kubernetes-automation.jpg 'GitOps Cookbook'){: .center-image }](/books/gitops/gitops-cookbook/)
+• 1 - Ошибка приложения - контейнер был остановлен из-за ошибки приложения или неправильной ссылки в спецификации image
 
-<br/>
+• 125 - Ошибка при запуске контейнера - команда запуска docker не была выполнена успешно
 
-### [[Book][Joel Lord] Building CI/CD Systems Using Tekton: Develop flexible and powerful CI/CD pipelines using Tekton Pipelines and Triggers [ENG, 2021]](/books/ci-cd/tekton/building-ci-cd-systems-using-tekton/)
+• 126 - Ошибка вызова команды - не удалось вызвать команду, указанную в спецификации image
 
-<br/>
+• 127 - Файл или каталог не найдены - файл или каталог, указанные в спецификации image, не найдены
 
-[![Building CI/CD Systems Using Tekton](/img/books/covers/building-ci-cd-systems-using-tekton.jpg 'Building CI/CD Systems Using Tekton'){: .center-image }](/books/ci-cd/tekton/building-ci-cd-systems-using-tekton/)
+• 128 - Недопустимый аргумент, используемый при выходе - выход был вызван неверным кодом выхода (допустимыми кодами являются целые числа в диапазоне от 0 до 255)
 
-<br/>
+• 134 - Аварийное завершение (SIGABRT) - контейнер прервал сам себя с помощью функции abort()
 
-### [YouTube] What is GitOps, How GitOps works and Why it's so useful [ENG]
+• 137 - Немедленное завершение (SIGKILL) - контейнер был немедленно завершен операционной системой с помощью сигнала SIGKILL
 
-<div align="center">
-    <iframe width="853" height="480" src="https://www.youtube.com/embed/f5EpcWp0THw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+• 139 - Ошибка сегментации (SIGSEGV) - контейнер попытался получить доступ к памяти, которая ему не была назначена, и был завершен
 
-<br/>
-<br/>
+• 143 - Изящное завершение (SIGTERM) - контейнер получил предупреждение о том, что он должен быть завершен, затем завершен
 
-### [Выглядит интересно для изучения](/looks-interesting/)
-
-### [Остальное](/other/)
+• 255 - Статус выхода вне зоны действия - контейнер завершен, возвращает код выхода за пределы допустимого диапазона, что означает, что причина ошибки неизвестна
