@@ -16,7 +16,7 @@ jobs:
 
       - name: Mirror to GitLab
         run: |
-          git remote add gitlab https://$GITLAB_USERNAME:$GITLAB_TOKEN@gitlab.com/$GITLAB_USERNAME/$GITLAB_REPONAME.git
+          git remote add gitlab https://$GITLAB_USERNAME:$GITLAB_TOKEN@gitlab.com/$GITLAB_USERNAME/$GITLAB_REPONAME
           git push --mirror gitlab
         env:
           GITLAB_REPONAME: docs.k8s.ru
