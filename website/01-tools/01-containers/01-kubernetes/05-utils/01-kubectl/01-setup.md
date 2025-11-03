@@ -40,6 +40,12 @@ Kustomize Version: v5.4.2
 
 <br/>
 
+```
+echo "alias k='kubectl'" >> ~/.bash_aliases
+```
+
+<br/>
+
 ### Вариант установки из репо (Не проверялось)
 
 Обратить внимание на kubernetes-xenial.
