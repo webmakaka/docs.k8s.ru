@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/kind/
 <br/>
 
 **Делаю:**  
-2025.06.28
+2025.11.25
 
 <br/>
 
@@ -23,7 +23,7 @@ https://kind.sigs.k8s.io/docs/user/quick-start/#installing-from-release-binaries
 // Если ошибка
 // curl: (35) error:0A00010B:SSL routines::wrong version number
 // Качай по http, а не по https
-$ [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+$ [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
 $ chmod +x ./kind
 $ sudo mv ./kind /usr/local/bin/kind
 ```
@@ -32,17 +32,21 @@ $ sudo mv ./kind /usr/local/bin/kind
 
 ```
 $ kind --version
-kind version 0.27.0
+kind version 0.30.0
 ```
 
 <br/>
 
-### Download Cluster Configurations and Create a 3 Node Kubernetes Cluster as
+### Download Cluster Configurations and Create a 3 Node Kubernetes Cluster
+
+Конфиг взят из курса DevOps
+
+<br/>
 
 ```
 $ mkdir -p ~/projects/courses/kubernetes
 $ cd ~/projects/courses/kubernetes
-$ git clone https://github.com/initcron/k8s-code.git
+$ git clone https://github.com/wildmakaka/k8s-code.git
 $ cd k8s-code/helper/kind/
 $ kind create cluster --config kind-three-node-cluster.yaml
 ```
@@ -60,15 +64,15 @@ $ kubectl cluster-info --context kind-kind
 
 ```
 $ kubectl get nodes
-NAME                 STATUS     ROLES           AGE   VERSION
-kind-control-plane   NotReady   control-plane   20s   v1.32.2
-kind-worker          NotReady   <none>          9s    v1.32.2
-kind-worker2         NotReady   <none>          9s    v1.32.2
+NAME                 STATUS   ROLES           AGE   VERSION
+kind-control-plane   Ready    control-plane   36s   v1.34.0
+kind-worker          Ready    <none>          26s   v1.34.0
+kind-worker2         Ready    <none>          25s   v1.34.0
 ```
 
 <br/>
 
-### Визуализировать в UI контейнеры
+### [Дополнительно] Визуализировать в UI контейнеры
 
 ```
 $ cd ~/projects/courses/kubernetes/

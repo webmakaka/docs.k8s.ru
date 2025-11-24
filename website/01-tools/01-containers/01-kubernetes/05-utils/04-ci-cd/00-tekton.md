@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/ci-cd/tekton/
 <br/>
 
 **Делаю:**  
-2024.03.08
+2025.11.25
 
 <br/>
 
@@ -52,12 +52,12 @@ $ bash tekton-setup.sh
 
 ```
 $ tkn version
-Client version: 0.35.1
+Client version: 0.43.0
 ```
 
 <br/>
 
-### Добавляем Tekton CRD в MiniKube
+### Добавляем Tekton CRD
 
 <br/>
 
@@ -69,26 +69,26 @@ $ kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeli
 
 ```
 $ tkn version
-Client version: 0.35.1
-Pipeline version: v0.57.0
+Client version: 0.43.0
+Pipeline version: v1.6.0
 ```
 
 <br/>
 
 ```
 $ kubectl get pods -n tekton-pipelines
-NAME                                           READY   STATUS    RESTARTS   AGE
-tekton-events-controller-77857f9b75-j26z2      1/1     Running   0          43s
-tekton-pipelines-controller-6987c95899-5sxm5   1/1     Running   0          43s
-tekton-pipelines-webhook-7f556bb7d9-kbn2t      1/1     Running   0          43s
+NAME                                         READY   STATUS    RESTARTS   AGE
+tekton-events-controller-7bb8d8b8cc-5j7q4    1/1     Running   0          30s
+tekton-pipelines-controller-f5b46dd7-rm565   1/1     Running   0          30s
+tekton-pipelines-webhook-6659bdfd6d-n8n5v    0/1     Running   0          30s
 ```
 
 <br/>
 
 ```
 $ kubectl get pods -n tekton-pipelines-resolvers
-NAME                                                READY   STATUS    RESTARTS   AGE
-tekton-pipelines-remote-resolvers-f94cc8475-6dmnx   1/1     Running   0          59s
+NAME                                                 READY   STATUS    RESTARTS   AGE
+tekton-pipelines-remote-resolvers-797b749dcc-pt6m6   1/1     Running   0          48s
 ```
 
 <br/>
@@ -96,20 +96,19 @@ tekton-pipelines-remote-resolvers-f94cc8475-6dmnx   1/1     Running   0         
 ```
 $ kubectl get crds
 NAME                                       CREATED AT
-clustertasks.tekton.dev                    2024-03-08T10:02:41Z
-customruns.tekton.dev                      2024-03-08T10:02:41Z
-pipelineruns.tekton.dev                    2024-03-08T10:02:41Z
-pipelines.tekton.dev                       2024-03-08T10:02:41Z
-resolutionrequests.resolution.tekton.dev   2024-03-08T10:02:41Z
-stepactions.tekton.dev                     2024-03-08T10:02:41Z
-taskruns.tekton.dev                        2024-03-08T10:02:41Z
-tasks.tekton.dev                           2024-03-08T10:02:41Z
-verificationpolicies.tekton.dev            2024-03-08T10:02:41Z
+customruns.tekton.dev                      2025-11-24T19:41:18Z
+pipelineruns.tekton.dev                    2025-11-24T19:41:18Z
+pipelines.tekton.dev                       2025-11-24T19:41:18Z
+resolutionrequests.resolution.tekton.dev   2025-11-24T19:41:18Z
+stepactions.tekton.dev                     2025-11-24T19:41:18Z
+taskruns.tekton.dev                        2025-11-24T19:41:19Z
+tasks.tekton.dev                           2025-11-24T19:41:18Z
+verificationpolicies.tekton.dev            2025-11-24T19:41:19Z
 ```
 
 <br/>
 
-### Добавление Tekton Dashboard в MiniKube (Если нужно)
+### [Дополнительно] Добавление Tekton Dashboard
 
 <br/>
 
@@ -135,7 +134,7 @@ $ localhost:8080
 
 <br/>
 
-### Installing Tekton Triggers (Если нужно)
+### [Дополнительно] Installing Tekton Triggers
 
 <br/>
 
@@ -163,20 +162,21 @@ Now that Triggers is installed, you will be able to listen for events from GitHu
 ```
 $ kubectl get pods -n tekton-pipelines
 NAME                                                READY   STATUS    RESTARTS   AGE
-tekton-events-controller-77857f9b75-j26z2           1/1     Running   0          2m24s
-tekton-pipelines-controller-6987c95899-5sxm5        1/1     Running   0          2m24s
-tekton-pipelines-webhook-7f556bb7d9-kbn2t           1/1     Running   0          2m24s
-tekton-triggers-controller-5b6d5f54b7-r5rvt         1/1     Running   0          36s
-tekton-triggers-core-interceptors-f58696689-x8crk   1/1     Running   0          30s
-tekton-triggers-webhook-689688fc54-d7964            1/1     Running   0          36s
+tekton-dashboard-699dcfc5b-fzs6t                    1/1     Running   0          7m13s
+tekton-events-controller-7bb8d8b8cc-5j7q4           1/1     Running   0          9m33s
+tekton-pipelines-controller-f5b46dd7-rm565          1/1     Running   0          9m33s
+tekton-pipelines-webhook-6659bdfd6d-n8n5v           1/1     Running   0          9m33s
+tekton-triggers-controller-6489447bd7-9q62v         1/1     Running   0          7m2s
+tekton-triggers-core-interceptors-99f845fb7-s6hzn   1/1     Running   0          6m49s
+tekton-triggers-webhook-7dcd7b4958-69xcc            1/1     Running   0          7m2s
 ```
 
 <br/>
 
 ```
 $ tkn version
-Client version: 0.35.1
-Pipeline version: v0.57.0
-Triggers version: v0.26.1
-Dashboard version: v0.44.0
+Client version: 0.43.0
+Pipeline version: v1.6.0
+Triggers version: v0.34.0
+Dashboard version: v0.63.1
 ```
