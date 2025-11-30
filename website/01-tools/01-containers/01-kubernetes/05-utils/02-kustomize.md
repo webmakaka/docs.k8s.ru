@@ -8,8 +8,11 @@ permalink: /tools/containers/kubernetes/utils/kustomize/
 
 # Инсталляция kustomize в ubuntu 22.04
 
-Date:  
-2024.03.08
+
+<br/>
+
+**Делаю:**  
+2025.11.25
 
 <br/>
 
@@ -22,7 +25,7 @@ kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash && chmod +x 
 
 ```
 $ kustomize version
-v5.3.0
+v5.8.0
 ```
 
 <br/>
