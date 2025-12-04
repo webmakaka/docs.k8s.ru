@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/security/bitnami-seal/
 <br/>
 
 **Делаю:**  
-2024.05.04
+2025.12.04
 
 <!--
 
@@ -43,8 +43,8 @@ $ echo LATEST_VERSION=$(curl --silent "https://api.github.com/repos/bitnami-labs
 
 ```
 $ cd ~/tmp
-$ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.26.2/kubeseal-0.26.2-linux-amd64.tar.gz
-$ tar -xvzf kubeseal-0.26.2-linux-amd64.tar.gz
+$ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.33.1/kubeseal-0.33.1-linux-amd64.tar.gz
+$ tar -xvzf kubeseal-0.33.1-linux-amd64.tar.gz
 $ sudo mv kubeseal /usr/local/bin/kubeseal
 $ sudo chmod +x /usr/local/bin/kubeseal
 ```
@@ -53,7 +53,7 @@ $ sudo chmod +x /usr/local/bin/kubeseal
 
 ```
 $ kubeseal --version
-kubeseal version: 0.26.2
+kubeseal version: 0.33.1
 ```
 
 <br/>
@@ -63,7 +63,7 @@ kubeseal version: 0.26.2
 ```
 // Установка контроллера
 $ kubectl create \
--f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.26.2/controller.yaml
+-f https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.33.1/controller.yaml
 ```
 
 <br/>
