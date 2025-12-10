@@ -12,6 +12,7 @@ permalink: /tools/containers/kubernetes/utils/service-mesh/istio/setup/
 
 Делаю:  
 17.07.2022
+2025.12.10
 
 <br/>
 
@@ -21,7 +22,7 @@ https://istio.io/docs/setup/getting-started/#download
 
 1. Инсталляция [MiniKube](/tools/containers/kubernetes/minikube/setup/)
 
-**Испольновалась версия KUBERNETES_VERSION=v1.22.2**
+**Испольновалась версия LATEST_KUBERNETES_VERSION=v1.32.2**
 
 2. Инсталляция [Kubectl](/tools/containers/kubernetes/utils/kubectl/)
 
@@ -37,8 +38,8 @@ $ export LATEST_VERSION=$(curl --silent "https://api.github.com/repos/istio/isti
 
 $ echo ${LATEST_VERSION}
 
-// Если меньше 1.14.1
-$ export LATEST_VERSION=1.14.1
+// Если меньше 1.28.1
+$ export LATEST_VERSION=1.28.1
 
 $ curl -L https://istio.io/downloadIstio | sh - && chmod +x ./istio-${LATEST_VERSION}/bin/istioctl && sudo mv ./istio-${LATEST_VERSION}/bin/istioctl /usr/local/bin/
 ```
@@ -47,8 +48,7 @@ $ curl -L https://istio.io/downloadIstio | sh - && chmod +x ./istio-${LATEST_VER
 
 ```
 $ istioctl version
-no running Istio pods in "istio-system"
-1.14.1
+client version: 1.28.1
 ```
 
 <br/>
@@ -74,6 +74,26 @@ $ istioctl install --skip-confirmation \
 
 ```
 $ kubectl -n istio-system wait --timeout=600s --for=condition=available deployment --all
+```
+
+<br/>
+
+```
+$ kubectl api-resources | grep -i istio
+wasmplugins                                            extensions.istio.io/v1alpha1      true         WasmPlugin
+destinationrules                    dr                 networking.istio.io/v1            true         DestinationRule
+envoyfilters                                           networking.istio.io/v1alpha3      true         EnvoyFilter
+gateways                            gw                 networking.istio.io/v1            true         Gateway
+proxyconfigs                                           networking.istio.io/v1beta1       true         ProxyConfig
+serviceentries                      se                 networking.istio.io/v1            true         ServiceEntry
+sidecars                                               networking.istio.io/v1            true         Sidecar
+virtualservices                     vs                 networking.istio.io/v1            true         VirtualService
+workloadentries                     we                 networking.istio.io/v1            true         WorkloadEntry
+workloadgroups                      wg                 networking.istio.io/v1            true         WorkloadGroup
+authorizationpolicies               ap                 security.istio.io/v1              true         AuthorizationPolicy
+peerauthentications                 pa                 security.istio.io/v1              true         PeerAuthentication
+requestauthentications              ra                 security.istio.io/v1              true         RequestAuthentication
+telemetries                         telemetry          telemetry.istio.io/v1             true         Telemetry
 ```
 
 <br/>
