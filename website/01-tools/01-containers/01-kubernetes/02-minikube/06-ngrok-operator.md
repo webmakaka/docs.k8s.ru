@@ -3,7 +3,7 @@ layout: page
 title: Ngrok Ingress Controller for Kubernetes (Доступ к kubernetes кластеру из интернетов)
 description: Ngrok Ingress Controller for Kubernetes (Доступ к kubernetes кластеру из интернетов)
 keywords: gitops, containers, kubernetes, setup, minikube, ubuntu, ngrock, ingress
-permalink: /tools/containers/kubernetes/minikube/ngrok-ingress-controller/
+permalink: /tools/containers/kubernetes/minikube/ngrok-operator/
 ---
 
 # Ngrok Ingress Controller for Kubernetes (Доступ к kubernetes кластеру из интернетов)
@@ -11,7 +11,9 @@ permalink: /tools/containers/kubernetes/minikube/ngrok-ingress-controller/
 <br/>
 
 **Делаю:**  
-2024.11.11
+2025.12.13
+
+**Приходится использовать VPN для работы!**
 
 Ни за что денег не платил. Все бесплатно, т.е. даром!
 
@@ -27,7 +29,16 @@ https://dashboard.ngrok.com/api - создать api key
 <br/>
 
 ```
-$ helm repo add ngrok https://ngrok.github.io/kubernetes-ingress-controller
+$ helm repo add ngrok https://charts.ngrok.com
+$ helm repo update ngrok
+```
+
+<br/>
+
+```
+$ helm search repo ngrok/ngrok-operator
+NAME                	CHART VERSION	APP VERSION	DESCRIPTION
+ngrok/ngrok-operator	0.21.1       	0.19.1     	The official ngrok Kubernetes Operator.
 ```
 
 <br/>
@@ -45,7 +56,7 @@ $ export NGROK_AUTHTOKEN=[YOUR Secret Auth Token]
 <br/>
 
 ```
-$ helm install ngrok-ingress-controller ngrok/kubernetes-ingress-controller \
+$ helm install ngrok-operator ngrok/ngrok-operator \
    --set credentials.apiKey=${NGROK_API_KEY} \
    --set credentials.authtoken=${NGROK_AUTHTOKEN}
 ```
@@ -57,7 +68,7 @@ $ helm install ngrok-ingress-controller ngrok/kubernetes-ingress-controller \
 <br/>
 
 **Делаю:**  
-2024.11.10
+2025.12.13
 
 <br/>
 

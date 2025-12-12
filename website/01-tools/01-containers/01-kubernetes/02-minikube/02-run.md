@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2025.12.10
+2025.12.13
 
 <br/>
 
@@ -251,4 +251,4 @@ $ minikube profile list
 
 <br/>
 
-### [Ngrok Ingress Controller for Kubernetes (Доступ к kubernetes кластеру из интернетов)](/tools/containers/kubernetes/minikube/ngrok-ingress-controller/)
+### [Ngrok Ingress Controller for Kubernetes (Доступ к kubernetes кластеру из интернетов)](/tools/containers/kubernetes/minikube/ngrok-operator/)
