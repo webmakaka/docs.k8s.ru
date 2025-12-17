@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2025.12.13
+2025.12.17
 
 <br/>
 
@@ -243,7 +243,7 @@ $ minikube profile list
 
 <br/>
 
-### [Добавить "Metal LB" (При необходимости)](/tools/containers/kubernetes/utils/metal-lb/)
+### [Добавить "Metal LB" (При необходимости)](/tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/)
 
 <br/>
 

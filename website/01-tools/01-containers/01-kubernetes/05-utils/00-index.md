@@ -14,7 +14,7 @@ permalink: /tools/containers/kubernetes/utils/
 
 ### [Инсталляция kustomize в ubuntu 20.04](/tools/containers/kubernetes/utils/kustomize/)
 
-### [Инсталляция Metal LB](/tools/containers/kubernetes/utils/metal-lb/)
+### [Инсталляция Metal LB](/tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/)
 
 ### [k9s - инструмент для визуальной работы с кластером](/tools/containers/kubernetes/utils/k9s/)
 
