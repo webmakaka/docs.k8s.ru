@@ -32,6 +32,8 @@ $ minikube --profile ${PROFILE} ip
 
 <br/>
 
+(Возможно это лишнее)
+
 ```yaml
 $ cat <<EOF | kubectl apply -f -
 apiVersion: v1

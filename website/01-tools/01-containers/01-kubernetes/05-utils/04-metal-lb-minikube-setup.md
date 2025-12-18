@@ -114,3 +114,10 @@ $ docker@marley-minikube:~$ curl http://192.168.49.21:8080
 
 С хост машины не заработал.
 Нужно route прописать в таблице маршрутизации.
+
+<br/>
+
+```
+// Не проверил
+$ sudo ip route add 192.168.49.0/24 via $(minikube ip -p ${PROFILE})
+```
