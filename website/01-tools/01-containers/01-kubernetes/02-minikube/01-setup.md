@@ -15,7 +15,7 @@ permalink: /tools/containers/kubernetes/minikube/setup/
 <br/>
 
 **Делаю:**  
-2025.03.02
+2025.12.19
 
 <br/>
 
@@ -24,7 +24,7 @@ permalink: /tools/containers/kubernetes/minikube/setup/
 <br/>
 
 ```shell
-// Узнать последнюю версию (v1.35.0):
+// Узнать последнюю версию (v1.37.0):
 $ curl -s https://api.github.com/repos/kubernetes/minikube/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
 
 // Установка
@@ -35,8 +35,8 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mini
 
 ```
 $ minikube version
-minikube version: v1.35.0
-commit: dd5d320e41b5451cdf3c01891bc4e13d189586ed-dirty
+minikube version: v1.37.0
+commit: 65318f4cfff9c12cc87ec9eb8f4cdd57b25047f3
 ```
 
 <br/>

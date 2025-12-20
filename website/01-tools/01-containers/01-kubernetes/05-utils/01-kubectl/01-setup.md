@@ -9,7 +9,7 @@ permalink: /tools/containers/kubernetes/utils/kubectl/setup/
 # Инсталляция kubectl в ubuntu 22.04
 
 Делаю:  
-2024.10.19
+2025.12.19
 
 <br/>
 
@@ -41,7 +41,7 @@ Kustomize Version: v5.4.2
 <br/>
 
 ```
-echo "alias k='kubectl'" >> ~/.bash_aliases
+$ echo "alias k='kubectl'" >> ~/.bash_aliases
 ```
 
 <br/>
