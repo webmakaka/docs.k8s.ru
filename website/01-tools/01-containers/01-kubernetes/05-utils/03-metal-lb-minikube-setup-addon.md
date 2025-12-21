@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/
 <br/>
 
 **Делаю:**  
-2025.12.17
+2025.12.21
 
 <br/>
 
@@ -31,8 +31,6 @@ $ minikube --profile ${PROFILE} ip
 ```
 
 <br/>
-
-(Возможно это лишнее)
 
 ```yaml
 $ cat <<EOF | kubectl apply -f -
@@ -72,6 +70,8 @@ spec:
   type: LoadBalancer
 EOF
 ```
+
+<br/>
 
 ```yaml
 $ cat << 'EOF' | kubectl apply -f -
