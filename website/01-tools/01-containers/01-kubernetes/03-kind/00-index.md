@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/kind/
 <br/>
 
 **Делаю:**  
-2025.11.26
+2025.12.29
 
 <br/>
 
