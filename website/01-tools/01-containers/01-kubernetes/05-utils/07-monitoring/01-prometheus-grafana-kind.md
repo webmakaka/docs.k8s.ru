@@ -26,7 +26,10 @@ permalink: /tools/containers/kubernetes/utils/monitoring/prometheus-grafana/setu
 ```
 https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
 
-https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#multiple-releases
+
+https://github.com/prometheus-operator/kube-prometheus/
+
+https://github.com/prometheus-community/helm-charts
 ```
 
 <br/>
@@ -77,6 +80,23 @@ prometheus-prom-kube-prometheus-stack-prometheus-0       2/2     Running   0    
 
 ```
 You should be able to access:
-prometheus at http://localhost:30300/
-grafana at http://localhost:30200/
+
+
+// Prometheus
+http://localhost:30300/
+```
+
+<br/>
+
+```
+// Пароль для grafana
+$ kubectl get secret -n monitoring prom-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```
+
+<br/>
+
+```
+// Grafana
+// admin /
+http://localhost:30200/
 ```

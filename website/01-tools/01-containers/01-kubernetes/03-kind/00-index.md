@@ -46,9 +46,8 @@ kind version 0.30.0
 <br/>
 
 ```yaml
-$ kind create cluster --config <(cat << 'EOF'
+$ cat <<EOF | kind create cluster --config=-
 kind: Cluster
-# apiVersion: kind.k8s.io/v1
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
@@ -123,7 +122,6 @@ nodes:
 - role: worker
 
 EOF
-)
 ```
 
 <br/>
