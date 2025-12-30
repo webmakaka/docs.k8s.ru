@@ -3,7 +3,7 @@ layout: page
 title: Kubernetes сервисы
 description: Kubernetes сервисы
 keywords: devops, containers, kubernetes, minikube, внешний доступ к службам
-permalink: /tools/containers/kubernetes/svc/
+permalink: /basics/svc/
 ---
 
 <br/>
@@ -14,6 +14,6 @@ permalink: /tools/containers/kubernetes/svc/
 
 ### Сервисы предоставляют внешним клиентам доступа к службам
 
-- [NodePort](/tools/containers/kubernetes/svc/nodeport/)
-- [LoadBalancer](/tools/containers/kubernetes/svc/load-balancer/)
-- [Ingress и ClusterIP](/tools/containers/kubernetes/svc/ingress/)
+- [NodePort](/basics/svc/nodeport/)
+- [LoadBalancer](/basics/svc/load-balancer/)
+- [Ingress и ClusterIP](/basics/svc/ingress/)

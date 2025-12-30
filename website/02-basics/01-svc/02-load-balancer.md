@@ -3,7 +3,7 @@ layout: page
 title: Создание службы LoadBalancer
 description: Создание службы LoadBalancers
 keywords: devops, containers, kubernetes, minikube, Создание службы LoadBalancers
-permalink: /tools/containers/kubernetes/svc/load-balancer/
+permalink: /basics/svc/load-balancer/
 ---
 
 # Создание службы LoadBalancer
@@ -13,7 +13,7 @@ permalink: /tools/containers/kubernetes/svc/load-balancer/
 
 <br/>
 
-Deployment создан как<a href="/tools/containers/kubernetes/svc/nodeport/">здесь</a>
+Deployment создан как<a href="/basics/svc/nodeport/">здесь</a>
 
 <br/>
 

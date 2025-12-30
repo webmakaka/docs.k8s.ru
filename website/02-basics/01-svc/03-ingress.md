@@ -3,7 +3,7 @@ layout: page
 title: Создание службы Ingress и ClusterIP
 description: Создание службы Ingress и ClusterIP
 keywords: devops, containers, kubernetes, minikube, ingress, clusterip, Создание службы Ingress и ClusterIP
-permalink: /tools/containers/kubernetes/svc/ingress/
+permalink: /basics/svc/ingress/
 ---
 
 # Создание службы Ingress и ClusterIP
@@ -19,7 +19,7 @@ permalink: /tools/containers/kubernetes/svc/ingress/
 
 <br/>
 
-Deployment уже создан как <a href="/tools/containers/kubernetes/svc/nodeport/">здесь</a>
+Deployment уже создан как <a href="/basics/svc/nodeport/">здесь</a>
 
 <br/>
 

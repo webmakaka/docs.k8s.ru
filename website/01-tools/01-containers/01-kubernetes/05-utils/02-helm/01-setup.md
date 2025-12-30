@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/helm/setup/
 <br/>
 
 **Делаю:**  
-2024.03.30
+2025.12.30
 
 <br/>
 
@@ -19,7 +19,7 @@ permalink: /tools/containers/kubernetes/utils/helm/setup/
 $ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 $ helm version --short --client
-v3.14.3+gf03cc04
+v3.19.4+g7cfb6e4
 ```
 
 <br/>
@@ -27,10 +27,6 @@ v3.14.3+gf03cc04
 ```
 // LIST
 $ helm repo list
-```
-
-```
-$ helm search repo nginx
 ```
 
 <br/>
@@ -47,13 +43,19 @@ $ helm repo add stable https://charts.helm.sh/stable
 <br/>
 
 ```
+$ helm search repo nginx
+```
+
+<br/>
+
+```
 // UPDATE
 $ helm repo update
 ```
 
 <br/>
 
-### Helm Installation and Verification (10 points)
+### Helm Installation and Verification
 
 ```
 $ helm install my-release oci://registry-1.docker.io/bitnamicharts/nginx

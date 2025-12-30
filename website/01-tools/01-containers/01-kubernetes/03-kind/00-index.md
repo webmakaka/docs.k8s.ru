@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/kind/
 <br/>
 
 **Делаю:**  
-2025.12.29
+2025.12.30
 
 <br/>
 
@@ -39,16 +39,91 @@ kind version 0.30.0
 
 ### Download Cluster Configurations and Create a 3 Node Kubernetes Cluster
 
-Конфиг взят из курса DevOps
+<br/>
+
+Конфиг взят из курса индуса по DevOps. Или по ArgoCD или Ultimate DevSecOps Bootcamp by School of Devops.
 
 <br/>
 
-```
-$ mkdir -p ~/projects/courses/kubernetes
-$ cd ~/projects/courses/kubernetes
-$ git clone https://github.com/wildmakaka/k8s-code.git
-$ cd k8s-code/helper/kind/
-$ kind create cluster --config kind-three-node-cluster.yaml
+```yaml
+$ kind create cluster --config <(cat << 'EOF'
+kind: Cluster
+# apiVersion: kind.k8s.io/v1
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 32000
+    hostPort: 32000
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 32100
+    hostPort: 32100
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30000
+    hostPort: 30000
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30055
+    hostPort: 30055
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30056
+    hostPort: 30056
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30100
+    hostPort: 30100
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30200
+    hostPort: 30200
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30300
+    hostPort: 30300
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30400
+    hostPort: 30400
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30500
+    hostPort: 30500
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30600
+    hostPort: 30600
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30700
+    hostPort: 30700
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 30800
+    hostPort: 30800
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+- role: worker
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 8000
+    hostPort: 8000
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+  - containerPort: 8080
+    hostPort: 8001
+    listenAddress: "0.0.0.0"
+    protocol: tcp
+
+- role: worker
+
+EOF
+)
 ```
 
 <br/>

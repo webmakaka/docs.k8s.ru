@@ -14,12 +14,11 @@ permalink: /
 
 Можете предложить что-то интересное для изучения!
 
-
 <br/>
 
 ### [Локальная установка kubernetes в linux](/tools/containers/kubernetes/setup/)
 
-### [Kubernetes сервисы](/tools/containers/kubernetes/svc/)
+### [Kubernetes сервисы](/basics/svc/)
 
 ### [Инструменты для работы с Kubernetes](/tools/containers/kubernetes/utils/)
 

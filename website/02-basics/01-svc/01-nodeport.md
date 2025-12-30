@@ -3,7 +3,7 @@ layout: page
 title: Создание службы Nodeport
 description: Создание службы Nodeport
 keywords: devops, containers, kubernetes, minikube, Создание службы Nodeport
-permalink: /tools/containers/kubernetes/svc/nodeport/
+permalink: /basics/svc/nodeport/
 ---
 
 # Создание службы Nodeport
