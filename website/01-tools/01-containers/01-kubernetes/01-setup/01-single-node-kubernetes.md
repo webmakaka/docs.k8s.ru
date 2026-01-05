@@ -19,7 +19,11 @@ permalink: /tools/containers/kubernetes/setup/single-node-kubernetes/
 
 ```
 // Kubernetes требует отключения swap
-$ sudo swapoff -a
+# Временное отключение swap
+# sudo swapoff -a
+
+# Постоянное отключение - закомментировать строку с swap в /etc/fstab
+# sudo sed -i '/swap/s/^/#/' /etc/fstab
 ```
 
 <br/>
