@@ -11,12 +11,16 @@ permalink: /tools/containers/kubernetes/utils/helm/setup/
 <br/>
 
 **Делаю:**  
-2025.12.30
+2026.01.06
 
 <br/>
 
 ```
 $ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+
+// В последний раз потребовалось выполнить
+// $ sudo chown $(whoami) /usr/local/bin/helm
 
 $ helm version --short --client
 v3.19.4+g7cfb6e4
@@ -27,39 +31,6 @@ v3.19.4+g7cfb6e4
 ```
 // LIST
 $ helm repo list
-```
-
-<br/>
-
-### Просто для примера. Репо протухшее!
-
-```
-$ helm repo add stable https://charts.helm.sh/stable
-
-// Удалить тухлое heml репо
-// $ helm repo remove stable
-```
-
-<br/>
-
-```
-$ helm search repo nginx
-```
-
-<br/>
-
-```
-// UPDATE
-$ helm repo update
-```
-
-<br/>
-
-### Helm Installation and Verification
-
-```
-$ helm install my-release oci://registry-1.docker.io/bitnamicharts/nginx
-$ helm uninstall my-release
 ```
 
 <br/>
