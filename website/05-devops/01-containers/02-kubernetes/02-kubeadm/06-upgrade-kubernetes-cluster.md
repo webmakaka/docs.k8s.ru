@@ -10,7 +10,8 @@ permalink: /devops/containers/kubernetes/kubeadm/upgrade-kubernetes-cluster/
 
 <br/>
 
-Делаю: 11.04.2019
+**Делаю:**
+11.04.2019
 
 <br/>
 **Не для production**
@@ -26,7 +27,7 @@ https://www.youtube.com/watch?v=-MZ-l2HG368&list=PL34sAs7_26wNBRWM6BDhnonoA5FMER
 
 <br/>
 
-Оф. док:
+Оф. док:  
 https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/
 
 <br/>
