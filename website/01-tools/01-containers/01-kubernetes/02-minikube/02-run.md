@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2026.01.06
+2026.01.29
 
 <br/>
 
@@ -83,6 +83,9 @@ $ {
 
     // Enable registry
     // minikube addons --profile ${PROFILE} enable registry
+
+    // Enable metallb
+    // minikube addons --profile ${PROFILE} enable metallb
 }
 ```
 

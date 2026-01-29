@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/
 <br/>
 
 **Делаю:**  
-2025.12.22
+2026.01.29
 
 <br/>
 

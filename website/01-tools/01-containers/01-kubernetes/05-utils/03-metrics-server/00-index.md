@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/utils/metrics-server/
 <br/>
 
 Делаю:  
-2026.01.23
+2026.01.28
 
 <br/>
 
