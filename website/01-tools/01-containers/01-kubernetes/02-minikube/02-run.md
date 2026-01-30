@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2026.01.29
+2026.01.30
 
 <br/>
 
@@ -79,7 +79,7 @@ $ {
     minikube start --profile ${PROFILE} --embed-certs
 
     // Enable ingress
-    // minikube addons --profile ${PROFILE} enable ingress
+    minikube addons --profile ${PROFILE} enable ingress
 
     // Enable registry
     // minikube addons --profile ${PROFILE} enable registry
