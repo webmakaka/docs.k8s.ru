@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Инсталляция Metal LB
-description: Инсталляция Metal LB
+title: Инсталляция Metal LB в Minikube
+description: Инсталляция Metal LB в Minikube
 keywords: gitops, containers, kubernetes, metal lb
 permalink: /tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/
 ---
 
-# Инсталляция Metal LB
+# Инсталляция Metal LB в Minikube
 
 <br/>
 
@@ -48,6 +48,10 @@ data:
       - 192.168.49.20-192.168.49.30
 EOF
 ```
+
+<br/>
+
+Все!
 
 <br/>
 

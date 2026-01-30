@@ -43,10 +43,10 @@ $ helm repo update
 <br/>
 
 ```
-$ helm upgrade --install prom \
-    -n monitoring \
+$ helm upgrade \
+    --install prom prometheus-community/kube-prometheus-stack \
+    --namespace monitoring \
     --create-namespace \
-    prometheus-community/kube-prometheus-stack \
     --set grafana.service.type=NodePort \
     --set grafana.service.nodePort=30200 \
     --set prometheus.service.type=NodePort \

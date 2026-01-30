@@ -79,13 +79,13 @@ $ {
     minikube start --profile ${PROFILE} --embed-certs
 
     // Enable ingress
-    minikube addons --profile ${PROFILE} enable ingress
+    // minikube addons --profile ${PROFILE} enable ingress
 
     // Enable registry
     // minikube addons --profile ${PROFILE} enable registry
 
     // Enable metallb
-    // minikube addons --profile ${PROFILE} enable metallb
+    minikube addons --profile ${PROFILE} enable metallb
 }
 ```
 
