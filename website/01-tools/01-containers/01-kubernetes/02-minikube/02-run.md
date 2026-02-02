@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2026.01.30
+2026.02.01
 
 <br/>
 
@@ -34,24 +34,33 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 ```
-// v1.35.0
-$ LATEST_KUBERNETES_VERSION=$(curl -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+// Список последних версий
+$ minikube config defaults kubernetes-version | head -n 4
+* v1.35.0
+* v1.35.0-rc.1
+* v1.35.0-rc.0
+* v1.35.0-beta.0
 ```
 
-<br/>
+<!-- <br/>
+
+```
+// v1.35.0
+$ LATEST_KUBERNETES_VERSION=$(curl -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+``` -->
+
+<!-- <br/>
 
 ```
 $ echo ${LATEST_KUBERNETES_VERSION}
 v1.35.0
-```
+``` -->
 
-<br/>
+<!-- <br/>
 
 ```
-// Версия v1.34.2 не стартовала
-// Если младше v1.32.2
-$ LATEST_KUBERNETES_VERSION=v1.32.2
-```
+$ LATEST_KUBERNETES_VERSION=v1.35.0
+``` -->
 
 <br/>
 
@@ -62,7 +71,7 @@ $ export \
     MEMORY=8G \
     HDD=20G \
     DRIVER=docker \
-    KUBERNETES_VERSION=${LATEST_KUBERNETES_VERSION}
+    KUBERNETES_VERSION=v1.35.0
 ```
 
 <br/>
