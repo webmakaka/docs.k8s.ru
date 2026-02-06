@@ -9,7 +9,7 @@ permalink: /tools/containers/kubernetes/utils/gateway-api/
 # Gateway API
 
 Делаю:  
-2026.02.02
+2026.02.06
 
 <br/>
 

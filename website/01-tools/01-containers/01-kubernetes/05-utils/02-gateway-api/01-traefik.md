@@ -9,7 +9,7 @@ permalink: /tools/containers/kubernetes/utils/gateway-api/traefik/
 # Traefik Gateway API for Kubernetes
 
 Делаю:  
-2026.02.02
+2026.02.06
 
 <br/>
 
@@ -81,7 +81,6 @@ $ helm install traefik traefik/traefik \
   --create-namespace \
   --version $CHART_VERSION \
   --values gateway-api-values.yaml
-
 ```
 
 As we don't have a LoadBalancer service in `kind`, let's `port-forward` so we can pretend we have one
@@ -174,6 +173,20 @@ spec:
         namespaces:
           from: Same
 EOF
+```
+
+<br/>
+
+```
+$ kubectl describe gateway gateway-api
+```
+
+<br/>
+
+```
+***
+Error while retrieving certificate: getting secret: secret "secret-tls" not found
+***
 ```
 
 <br/>
@@ -520,6 +533,8 @@ Now that we have a TLS cert, we can create a Kubernetes secret to store it:
 $ kubectl create secret tls secret-tls -n default --cert kubernetes/gateway-api/tls/cert.pem --key kubernetes/gateway-api/tls/key.pem
 ```
 
+<br/>
+
 We need to
 
 - Adjust our Gateway, to enable the TLS Listener first!
@@ -733,8 +748,10 @@ We can use this to handle scenarios like CORS (Cross-Origin Resource Sharing)
 
 Let's access our web app directly over `localhost` which makes a call to `example-app.com` and should be blocked by CORS. </br>
 
+<br/>
+
 ```shell
-kubectl port-forward svc/web-app 8000:80
+$ kubectl port-forward svc/web-app 8000:80
 ```
 
 Once we apply the Middleware update to our HTTPRoute, we can perform cross origin API calls:
