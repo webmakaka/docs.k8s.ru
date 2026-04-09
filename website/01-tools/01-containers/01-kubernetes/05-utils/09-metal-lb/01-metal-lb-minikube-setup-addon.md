@@ -11,7 +11,11 @@ permalink: /tools/containers/kubernetes/utils/metal-lb/minikube/setup/addon/
 <br/>
 
 **Делаю:**  
-2026.01.29
+2026.03.27
+
+<br/>
+
+[Запуск и останов minikube в ubuntu 22.04](/tools/containers/kubernetes/minikube/run/)
 
 <br/>
 
@@ -51,7 +55,7 @@ EOF
 
 <br/>
 
-Все!
+**Все!**
 
 <br/>
 

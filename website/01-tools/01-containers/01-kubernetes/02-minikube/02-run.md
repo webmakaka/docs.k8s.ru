@@ -11,7 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/
 <br/>
 
 **Делаю:**  
-2026.02.05
+2026.04.06
 
 <br/>
 
@@ -33,13 +33,13 @@ permalink: /tools/containers/kubernetes/minikube/run/
 
 <br/>
 
-```
+```shell
 // Список последних версий
 $ minikube config defaults kubernetes-version | head -n 4
+* v1.35.1
 * v1.35.0
 * v1.35.0-rc.1
 * v1.35.0-rc.0
-* v1.35.0-beta.0
 ```
 
 <!-- <br/>
@@ -64,19 +64,19 @@ $ LATEST_KUBERNETES_VERSION=v1.35.0
 
 <br/>
 
-```
+```shell
 $ export \
     PROFILE=${USER}-minikube \
-    CPUS=4 \
+    CPUS=no-limit \
     MEMORY=8G \
     HDD=20G \
     DRIVER=docker \
-    KUBERNETES_VERSION=v1.35.0
+    KUBERNETES_VERSION=v1.35.1
 ```
 
 <br/>
 
-```
+```shell
 $ {
     minikube --profile ${PROFILE} config set memory ${MEMORY}
     minikube --profile ${PROFILE} config set cpus ${CPUS}
@@ -94,13 +94,16 @@ $ {
     // minikube addons --profile ${PROFILE} enable registry
 
     // Enable metallb
-    minikube addons --profile ${PROFILE} enable metallb
+    // minikube addons --profile ${PROFILE} enable metallb
+
+    // Enable nvidia-device-plugin
+    // minikube addons --profile ${PROFILE} enable nvidia-device-plugin
 }
 ```
 
 <br/>
 
-```
+```shell
 // При необходимости можно будет удалить профиль и все созданное в профиле следующей командой
 // $ minikube --profile ${PROFILE} stop && minikube --profile ${PROFILE} delete
 
@@ -110,7 +113,15 @@ $ {
 
 <br/>
 
+```shell
+$ kubectl get nodes
+NAME              STATUS   ROLES           AGE     VERSION
+marley-minikube   Ready    control-plane   3h52m   v1.35.0
 ```
+
+<br/>
+
+```shell
 $ kubectl version
 Client Version: v1.31.0
 Kustomize Version: v5.4.2
@@ -119,7 +130,7 @@ Server Version: v1.32.2
 
 <br/>
 
-```
+```shell
 // Получить список установленных расширений
 // $ minikube addons --profile ${PROFILE} list
 ```
@@ -130,7 +141,7 @@ Server Version: v1.32.2
 
 <br/>
 
-```
+```shell
 // Получить текущий контекст
 // $ kubectl config current-context
 ```
@@ -139,7 +150,7 @@ Server Version: v1.32.2
 
 ### Сделать, чтобы Docker images хранились в выделенном ранее storage внутри контейнера, а не на основном хосте.
 
-```
+```shell
 // Посмотреть команды которые установят переменные окружения
 // $ minikube docker-env --profile ${PROFILE}
 
@@ -153,20 +164,20 @@ $ eval $(minikube -p ${PROFILE} docker-env)
 
 <br/>
 
-```
+```shell
 $ minikube addons --profile ${PROFILE} enable dashboard
 ```
 
 <br/>
 
-```
+```shell
 // Подключиться к dashboard можно следующей командой
 // $ minikube --profile ${PROFILE} dashboard
 ```
 
 <br/>
 
-```
+```shell
 // Получить токен для авторизации в kubernetes dashboard
 // $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 ```
@@ -175,7 +186,7 @@ $ minikube addons --profile ${PROFILE} enable dashboard
 
 ### Дополнительная инфа по развернутому kuberntes кластеру
 
-```
+```shell
 $ kubectl cluster-info
 Kubernetes control plane is running at https://192.168.49.2:8443
 CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
@@ -183,7 +194,7 @@ CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/se
 
 <br/>
 
-```
+```shell
 $ minikube --profile ${PROFILE} config view
 - disk-size: 20G
 - driver: docker
@@ -194,7 +205,7 @@ $ minikube --profile ${PROFILE} config view
 
 <br/>
 
-```
+```shell
 $ kubectl api-resources
 ```
 
@@ -204,7 +215,7 @@ $ kubectl api-resources
 
 <br/>
 
-```
+```shell
 $ minikube --profile ${PROFILE} ssh
 ```
 
@@ -214,7 +225,7 @@ $ minikube --profile ${PROFILE} ssh
 
 <br/>
 
-```
+```shell
 $ minikube --profile ${PROFILE} ip
 $ export MINIKUBE_IP=192.168.99.100
 $ ssh -i ~/.minikube/machines/${PROFILE}/id_rsa docker@${MINIKUBE_IP}
@@ -224,21 +235,21 @@ $ ssh -i ~/.minikube/machines/${PROFILE}/id_rsa docker@${MINIKUBE_IP}
 
 ### Остальное
 
-```
+```shell
 $ kubectl get events
 $ kubectl get events --sort-by=.metadata.creationTimestamp
 ```
 
 <br/>
 
-```
+```shell
 // Установить vscode как editor по умолчанию
 $ export KUBE_EDITOR="code -w"
 ```
 
 <br/>
 
-```
+```shell
 // Расположение профайлов
 ~/.minikube/profiles
 
