@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Инсталляция kubectl в ubuntu 22.04
-description: Инсталляция kubectl в ubuntu 22.04
+title: Traefik Gateway API for Kubernetes
+description: Traefik Gateway API for Kubernetes
 keywords: tools, containers, kubernetes, Gateway API, Traefik
 permalink: /tools/containers/kubernetes/utils/gateway-api/traefik/
 ---
@@ -14,6 +14,15 @@ permalink: /tools/containers/kubernetes/utils/gateway-api/traefik/
 <br/>
 
 https://www.youtube.com/watch?v=MN-k29g97ik
+
+<br/>
+
+[Выполнил шаги по установке Gateway API](/tools/containers/kubernetes/utils/gateway-api/)
+
+<br/>
+
+**Далее:**  
+https://github.com/marcel-dempers/docker-development-youtube-series/tree/master/kubernetes/gateway-api/traefik
 
 <br/>
 
@@ -46,7 +55,7 @@ $ cd ~/tmp
 <br/>
 
 ```yaml
-$ cat > gateway-api-values.yaml << EOF
+$ cat > traefik-values.yaml << EOF
 logs:
   access:
     enabled: true
@@ -76,11 +85,12 @@ EOF
 <br/>
 
 ```shell
-$ helm install traefik traefik/traefik \
+$ helm upgrade \
+  --install traefik traefik/traefik \
   --namespace traefik \
   --create-namespace \
   --version $CHART_VERSION \
-  --values gateway-api-values.yaml
+  --values traefik-values.yaml
 ```
 
 As we don't have a LoadBalancer service in `kind`, let's `port-forward` so we can pretend we have one
@@ -193,29 +203,6 @@ Error while retrieving certificate: getting secret: secret "secret-tls" not foun
 
 ## Traffic Management Features: HTTP Routes
 
-[Documentation](https://gateway-api.sigs.k8s.io/api-types/httproute/)
-
-The important fields on HTTP Route we will cover:
-
-- `parentRefs`
-- `sectionName`
-- `hostnames`
-- `rules`
-- `matches`
-- `filters`
-
-Feature Table:
-
-| Feature                 | Example                                         |
-| ----------------------- | ----------------------------------------------- |
-| Route by Hostname       | [example](#route-by-hostname)                   |
-| Route by Path           | [example](#route-by-path)                       |
-| Route using URL Rewrite | [example](#route-using-url-rewrite)             |
-| Header Modification     | [example](#requestresponse-header-manipulation) |
-| HTTPS & TLS             | [example](#https-and-tls)                       |
-
-For traffic management, we can take a look at some basic HTTP routes.</br>
-
 <br/>
 
 ```shell
@@ -225,371 +212,13 @@ $ kubectl -n traefik port-forward svc/traefik 8080:80
 
 <br/>
 
-### Route by Hostname
-
-We can route by host. </br>
-This will route all traffic that matches the `Host` header with the `hostnames` field: </br>
-
-http://example-app-python.com/ 👉🏽 http://python-svc:5000 </br>
-http://example-app-go.com/ 👉🏽 http://go-svc:5000 </br>
-
-<br/>
-
-```yaml
-$ cat << EOF | kubectl apply -f -
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: python-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http #allows us to bind to a specific listener in the Gateway
-    kind: Gateway
-
-  hostnames:
-  - example-app-python.com
-
-  rules:
-  - backendRefs:
-    - name: python-svc
-      port: 5000
-      weight: 1
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: go-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app-go.com
-
-  rules:
-  - backendRefs:
-    - name: go-svc
-      port: 5000
-      weight: 1
-EOF
-```
-
-<br/>
-
-```
-// Ok!
-http://example-app-python.com:8080/
-http://example-app-go.com:8080/
-```
-
-<br/>
-
-### Route by Path
-
-We can also route by host and path with different matching strategies. </br>
-
-Exact: </br>
-http://example-app-python.com/ 👉🏽 http://python-svc:5000/ </br>
-http://example-app-go.com/ 👉🏽 http://go-svc:5000/ </br>
-
-PathPrefix: </br>
-http://example-app-python.com/_ 👉🏽 http://python-svc:5000/_ </br>
-http://example-app-go.com/_ 👉🏽 http://go-svc:5000/_ </br>
-
-<br/>
-
-```yaml
-$ cat << EOF | kubectl apply -f -
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: python-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app-python.com
-
-  rules:
-  - matches:
-    - path:
-        type: Exact  # matches the exact path, only allows to visit /
-        value: /
-    backendRefs:
-    - name: python-svc
-      port: 5000
-      weight: 1
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: go-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app-go.com
-
-  rules:
-  - matches:
-    - path:
-        type: Exact  # matches the exact path, only allows to visit /
-        #type: PathPrefix # prefix match, allows to visit /*  Passes entire URL to upstream
-        value: /
-    backendRefs:
-    - name: go-svc
-      port: 5000
-      weight: 1
-EOF
-```
-
-<br/>
-
-### Route using URL Rewrite
-
-We can rewrite the hostname or URL using URL rewrite. </br>
-This way, we can combine our services under one domain and our controller can act as a true API gateway:
-
-http://example-app.com/api/python 👉🏽 http://python-svc:5000/ </br>
-http://example-app.com/api/go 👉🏽 http://go-svc:5000/ </br>
-As well as: </br>
-http://example-app.com/api/go/status 👉🏽 http://go-svc:5000/status </br>
-
-<br/>
-
-```yaml
-$ cat << EOF | kubectl apply -f -
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: python-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app.com
-
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api/python
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: python-svc
-      port: 5000
-      weight: 1
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: go-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app.com
-
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api/go
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: go-svc
-      port: 5000
-      weight: 1
-EOF
-```
-
-<br/>
-
-### Request\Response Header Manipulation
-
-With Gateway API, you can modify request and response headers. </br>
-This is possible with the `ResponseHeaderModifier` filter </br>
-
-At the time of this recording, Gateway API does not natively support CORS. </br>
-Even with it in the Experimental channel, many controllers do not support it yet. </br>
-
-Let's do a basic CORS header modification for our Go HTTPRoute </br>
-
-<br/>
-
-```shell
-$ kubectl port-forward svc/web-app 8000:80
-```
-
-The Header modification:
-
-<br/>
-
-```yaml
-$ cat << EOF | kubectl apply -f -
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: go-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-
-  hostnames:
-  - example-app.com
-
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api/go
-    filters:
-    - type: ResponseHeaderModifier
-      responseHeaderModifier:
-        add:
-        - name: X-Custom-Header
-          value: "CustomHeaderValue"
-        - name: Access-Control-Allow-Origin
-          value: "http://localhost:8000"
-        - name: Access-Control-Allow-Methods
-          value: "GET, POST, PUT, DELETE, OPTIONS"
-        - name: Access-Control-Allow-Headers
-          value: "Content-Type, Authorization"
-        - name: Access-Control-Max-Age
-          value: "86400" # Cache preflight for 24 hours
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: go-svc
-      port: 5000
-      weight: 1
-EOF
-```
-
-<br/>
-
-### HTTPS and TLS
-
-In my video, I generate a test TLS cert using [mkcert](https://github.com/FiloSottile/mkcert)
-
-```shell
-$ curl -L https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64 -o mkcert && chmod +x mkcert && sudo mv mkcert /usr/local/bin/
-
-#linux
-$ export CAROOT=${PWD}/kubernetes/gateway-api/tls
-
-$ mkcert -key-file kubernetes/gateway-api/tls/key.pem -cert-file kubernetes/gateway-api/tls/cert.pem example-app.com
-
-$ mkcert -install
-```
-
-Now that we have a TLS cert, we can create a Kubernetes secret to store it:
-
-```shell
-$ kubectl create secret tls secret-tls -n default --cert kubernetes/gateway-api/tls/cert.pem --key kubernetes/gateway-api/tls/key.pem
-```
-
-<br/>
-
-We need to
-
-- Adjust our Gateway, to enable the TLS Listener first!
-- Then apply the TLS listener in our HTTP Route to enable TLS, using `sectionName`
-
-<br/>
-
-```yaml
-$ cat << EOF | kubectl apply -f -
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: go-route
-  namespace: default
-
-spec:
-  parentRefs:
-  - name: gateway-api
-    sectionName: http
-    kind: Gateway
-  - name: gateway-api
-    sectionName: https
-    kind: Gateway
-
-  hostnames:
-  - example-app.com
-
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api/go
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
-    backendRefs:
-    - name: go-svc
-      port: 5000
-      weight: 1
-EOF
-```
-
-Let's `port-forward` to 443 since that is where TLS is exposed:
-
 ```shell
 $ kubectl -n traefik port-forward svc/traefik 8081:443
 ```
 
-Result: </br>
-https://example-app.com:8081/api/go 👉🏽 http://go-svc:5000/ </br>
+<br/>
 
-Checkout [More Official Guides](https://gateway-api.sigs.k8s.io/guides/) on the Kubernetes Gateway API SIGs page.</br>
+[checks](/tools/containers/kubernetes/utils/gateway-api/checks/)
 
 <br/>
 

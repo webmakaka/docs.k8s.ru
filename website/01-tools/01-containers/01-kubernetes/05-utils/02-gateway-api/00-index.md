@@ -9,7 +9,7 @@ permalink: /tools/containers/kubernetes/utils/gateway-api/
 # Gateway API
 
 Делаю:  
-2026.02.06
+2026.04.10
 
 <br/>
 
@@ -31,8 +31,8 @@ $ kind create cluster --name gatewayapi --image kindest/node:v1.35.0
 
 ```shell
 $ kubectl get nodes
-NAME                       STATUS     ROLES           AGE   VERSION
-gatewayapi-control-plane   NotReady   control-plane   11s   v1.35.0
+NAME                       STATUS   ROLES           AGE   VERSION
+gatewayapi-control-plane   Ready    control-plane   97s   v1.35.0
 ```
 
 <br/>
@@ -57,7 +57,7 @@ These APIs are part of the Experimental Channel:
 - TCP Routes: `kubectl get tcproute`
 - UDP Routes: `kubectl get udproute`
 
-<b>Note: Gateway API is very new, and all of the above is subject to change quite rapidly </br></b>
+<strong>Note: Gateway API is very new, and all of the above is subject to change quite rapidly</strong>
 
 <br/>
 
@@ -346,4 +346,79 @@ We also need to imagine we have a domain called `example-app.com` , so let's set
 $ echo "127.0.0.1 example-app.com" | sudo tee -a /etc/hosts
 $ echo "127.0.0.1 example-app-go.com" | sudo tee -a /etc/hosts
 $ echo "127.0.0.1 example-app-python.com" | sudo tee -a /etc/hosts
+```
+
+<br/>
+
+### HTTPS and TLS
+
+<br/>
+
+```shell
+$ sudo apt install -y libnss3-tools
+```
+
+<br/>
+
+In my video, I generate a test TLS cert using [mkcert](https://github.com/FiloSottile/mkcert)
+
+```shell
+$ curl -L https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64 -o mkcert && chmod +x mkcert && sudo mv mkcert /usr/local/bin/
+
+#linux
+$ export CAROOT=${PWD}/kubernetes/gateway-api/tls
+
+$ mkcert -key-file kubernetes/gateway-api/tls/key.pem -cert-file kubernetes/gateway-api/tls/cert.pem example-app.com
+
+$ mkcert -install
+```
+
+Now that we have a TLS cert, we can create a Kubernetes secret to store it:
+
+```shell
+$ kubectl create secret tls secret-tls -n default --cert kubernetes/gateway-api/tls/cert.pem --key kubernetes/gateway-api/tls/key.pem
+```
+
+<br/>
+
+We need to
+
+- Adjust our Gateway, to enable the TLS Listener first!
+- Then apply the TLS listener in our HTTP Route to enable TLS, using `sectionName`
+
+<br/>
+
+```yaml
+$ cat << EOF | kubectl apply -f -
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: go-route
+  namespace: default
+spec:
+  parentRefs:
+  - name: gateway-api
+    sectionName: http
+    kind: Gateway
+  - name: gateway-api
+    sectionName: https
+    kind: Gateway
+  hostnames:
+  - example-app.com
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/go
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: go-svc
+      port: 5000
+      weight: 1
+EOF
 ```
