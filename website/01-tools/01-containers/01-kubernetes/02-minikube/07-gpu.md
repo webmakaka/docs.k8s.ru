@@ -11,11 +11,7 @@ permalink: /tools/containers/kubernetes/minikube/run/gpu/
 <br/>
 
 **Делаю:**  
-2026.04.09
-
-<br/>
-
-Записываю по памяти, то что заработало в конце концов. Наверное неправильно настраиваю, первый опыт. Постепенно улучшу.
+2026.04.10
 
 <br/>
 
@@ -166,6 +162,29 @@ $ minikube start \
 
 <br/>
 
+```shell
+$ minikube addons enable nvidia-device-plugin
+```
+
+<br/>
+
+```shell
+$ kubectl get pods -n kube-system
+
+***
+nvidia-device-plugin-daemonset-l2tlz   1/1     Running   0             4m38s
+***
+```
+
+<br/>
+
+```shell
+$ minikube ssh
+$ sudo ldconfig /usr/lib/x86_64-linux-gnu
+```
+
+<!-- <br/>
+
 ```yaml
 $ cat << EOF | kubectl apply -f -
 apiVersion: apps/v1
@@ -195,16 +214,9 @@ spec:
           hostPath:
             path: /var/lib/kubelet/device-plugins
 EOF
-```
+``` -->
 
-<br/>
-
-```shell
-$ minikube ssh
-$ sudo ldconfig /usr/lib/x86_64-linux-gnu
-```
-
-<br/>
+<!-- <br/>
 
 ```shell
 // ХЗ нужно или нет
@@ -213,7 +225,7 @@ $ minikube ssh
 docker@minikube:~$ sudo sed -i 's/mode = "auto"/mode = "legacy"/' /etc/nvidia-container-runtime/config.toml
 docker@minikube:~$ sudo systemctl restart docker
 docker@minikube:~$ exit
-```
+``` -->
 
 <br/>
 
@@ -248,6 +260,14 @@ pod "gpu-test" deleted
 // 1 GPU на узле minikube
 $ kubectl get nodes -o json | jq -r '.items[] | "\(.metadata.name): \(.status.allocatable."nvidia.com/gpu" // 0)"'
 minikube: 1
+```
+
+<br/>
+
+```shell
+$ kubectl run gpu-test --rm -it --restart=Never --image=nvidia/cuda:12.2.2-base-ubuntu22.04 -- sh -c "nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | awk -F', ' '{print \$1 \" / \" \$2 \" MiB\"}'"
+
+2283 / 4096 MiB
 ```
 
 <br/>
@@ -342,35 +362,4 @@ $ curl http://192.168.49.2:30434/api/generate -d '{
 
 ```
 Да, я работаю в вашем кластере Kubernetes с NVIDIA GeForce GTX 1650 видеокартой для выполнения задачи. Настройка и управление рабочими нагрузками на GPU у меня не вызывает проблем, так как это мой основной функционал в текущей роли
-```
-
-<br/>
-
-### Улучшения
-
-```shell
-$ kubectl delete ds nvidia-device-plugin-daemonset -n kube-system
-$ minikube addons enable nvidia-device-plugin
-```
-
-<br/>
-
-```shell
-$ kubectl get pods -n kube-system
-NAME                                   READY   STATUS    RESTARTS      AGE
-coredns-7d764666f9-mtmgh               1/1     Running   1 (12m ago)   19m
-etcd-minikube                          1/1     Running   1 (12m ago)   19m
-kube-apiserver-minikube                1/1     Running   1 (12m ago)   19m
-kube-controller-manager-minikube       1/1     Running   1 (12m ago)   19m
-kube-proxy-n8ww2                       1/1     Running   1 (12m ago)   19m
-kube-scheduler-minikube                1/1     Running   1 (12m ago)   19m
-nvidia-device-plugin-daemonset-l2tlz   1/1     Running   0             4m38s
-storage-provisioner                    1/1     Running   3 (12m ago)   19m
-```
-
-<br/>
-
-```shell
-$ kubectl run gpu-test --rm -it --restart=Never --image=nvidia/cuda:12.2.2-base-ubuntu22.04 -- sh -c "nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | awk -F', ' '{print \$1 \" / \" \$2 \" MiB\"}'"
-2283 / 4096 MiB
 ```
