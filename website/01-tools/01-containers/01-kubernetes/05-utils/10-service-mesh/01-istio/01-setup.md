@@ -10,9 +10,8 @@ permalink: /tools/containers/kubernetes/utils/service-mesh/istio/setup/
 
 <br/>
 
-Делаю:  
-17.07.2022
-2025.12.10
+**Делаю:**  
+2026.04.21
 
 <br/>
 
@@ -32,30 +31,30 @@ https://istio.io/docs/setup/getting-started/#download
 
 <br/>
 
-```
+```shell
 $ cd ~/tmp/
 $ export LATEST_VERSION=$(curl --silent "https://api.github.com/repos/istio/istio/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
 
 $ echo ${LATEST_VERSION}
 
-// Если меньше 1.28.1
-$ export LATEST_VERSION=1.28.1
+// Если меньше 1.29.2
+$ export LATEST_VERSION=1.29.2
 
 $ curl -L https://istio.io/downloadIstio | sh - && chmod +x ./istio-${LATEST_VERSION}/bin/istioctl && sudo mv ./istio-${LATEST_VERSION}/bin/istioctl /usr/local/bin/
 ```
 
 <br/>
 
-```
+```shell
 $ istioctl version
-client version: 1.28.1
+client version: 1.29.2
 ```
 
 <br/>
 
 ### Установка ресурсов istio на minikube
 
-```
+```shell
 $ istioctl experimental precheck
 ✔ No issues found when checking the cluster. Istio is safe to install or upgrade!
 ```
