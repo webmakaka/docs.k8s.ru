@@ -87,6 +87,9 @@ $ {
     minikube --profile ${PROFILE} config set kubernetes-version ${KUBERNETES_VERSION}
     minikube start --profile ${PROFILE} --embed-certs
 
+    // Enable metrics-server
+    minikube addons enable metrics-server
+
     // Enable ingress
     minikube addons --profile ${PROFILE} enable ingress
 
