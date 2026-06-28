@@ -11,5 +11,5 @@ permalink: /open-search.xml
  <Description>Use Google to search docs.k8s.ru</Description>
  <Tags>docs.k8s.ru</Tags>
  <Url type="text/html"
-      template="http://www.google.com/search?as_sitesearch=docs.k8s.ru&amp;q={searchTerms}"/>
+      template="https://www.google.com/search?as_sitesearch=docs.k8s.ru&amp;q={searchTerms}"/>
 </OpenSearchDescription>
