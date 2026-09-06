@@ -10,4 +10,4 @@ permalink: /devops/containers/kubernetes/packages/heml/setup/
 
 <br/>
 
-Перенесено <a href="/containers/kubernetes/tools/helm/setup/">сюда</a>
+Перенесено <a href="/tools/containers/kubernetes/utils/helm/setup/">сюда</a>
