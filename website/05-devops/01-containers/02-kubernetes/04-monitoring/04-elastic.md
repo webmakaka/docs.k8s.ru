@@ -8,7 +8,7 @@ permalink: /devops/containers/kubernetes/monitoring/elastic/
 
 <br/>
 
-Инсталляции перенесены [сюда](/tools/containers/kubernetes/tools/helm/)
+Инсталляции перенесены [сюда](/tools/containers/kubernetes/utils/helm/)
 
 <br/>
 
