@@ -8,4 +8,4 @@ permalink: /devops/containers/kubernetes/clouds/
 
 # Kuberneters в облаках
 
-### [Kuberneters в облаках Google (GKE)](/devops/clouds/google/gke/)
+### [Kuberneters в облаках Google (GKE)](https://docs.gitops.ru/devops/clouds/google/gke/)

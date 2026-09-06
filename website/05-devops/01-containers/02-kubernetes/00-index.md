@@ -44,13 +44,13 @@ https://github.com/webmakaka/vagrant-kubernetes-3-node-cluster-centos7
 
 ### [Kubernetes Package Management (Kustomize, Helm)](/devops/containers/kubernetes/packages/)
 
-### [Service Mesh (ISTIO)](//docs.k8s.ru/courses/containers/kubernetes/service-mesh/istio/)
+### [Service Mesh (ISTIO)](/courses/containers/kubernetes/service-mesh/istio/)
 
 <br/>
 
 ## Инструменты для визуальной работы с кластером
 
-### [k9s - в консоли linux](/devops/containers/kubernetes/k9s/)
+### [k9s - в консоли linux](/tools/containers/kubernetes/utils/k9s/)
 
 <br/>
 

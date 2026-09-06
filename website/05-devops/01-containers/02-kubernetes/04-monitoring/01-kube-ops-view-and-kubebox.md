@@ -10,7 +10,8 @@ permalink: /devops/containers/kubernetes/monitoring/kube-ops-view-and-kubebox/
 
 <br/>
 
-Делаю: 22.04.2019
+Делаю:
+22.04.2019
 
 По материалам из видео индуса:
 

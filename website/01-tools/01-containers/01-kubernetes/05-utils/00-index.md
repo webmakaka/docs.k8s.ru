@@ -18,7 +18,7 @@ permalink: /tools/containers/kubernetes/utils/
 
 ### [k9s - инструмент для визуальной работы с кластером](/tools/containers/kubernetes/utils/k9s/)
 
-### [Scaffold - инструмент для разработки в kubernetes](/tools/containers/kubernetes/utils/scaffold/)
+### [Scaffold - инструмент для разработки в kubernetes](https://docs.gitops.ru/tools/containers/kubernetes/utils/scaffold/)
 
 ### [Helm (управление пакетами)](/tools/containers/kubernetes/utils/helm/)
 

@@ -236,4 +236,4 @@ http://192.168.1.101:8080/
 
 **[Пример с драйвером kvm](https://www.zepworks.com/posts/access-minikube-remotely-kvm/)**
 
-**[Еще 1 Пример с драйвером virtualbox](/samples/ci-cd/gitlab/kubernetes/prepare-gitlab-host-to-work-with-minikube/)**
+**[Еще 1 Пример с драйвером virtualbox](https://docs.gitops.ru/samples/ci-cd/gitlab/kubernetes/prepare-gitlab-host-to-work-with-minikube/)**

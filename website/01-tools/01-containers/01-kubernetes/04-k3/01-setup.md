@@ -17,26 +17,28 @@ permalink: /tools/containers/kubernetes/k3s/setup/
 **Делаю:**  
 2024.10.19
 
-```
+<br/>
+
+```shell
 $ curl -sfL https://get.k3s.io | sh -
 ```
 
 <br/>
 
-```
+```shell
 $ sudo systemctl enable k3s.service
 $ sudo systemctl start k3s.service
 ```
 
 <br/>
 
-```
+```shell
 System has not been booted with systemd as init system (PID 1). Can't operate.
 Failed to connect to bus: Host is dow
 ```
 
 <br/>
 
-```
-sudo k3s kubectl get node
+```shell
+$ sudo k3s kubectl get node
 ```

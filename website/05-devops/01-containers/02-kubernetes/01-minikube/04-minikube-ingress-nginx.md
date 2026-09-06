@@ -8,7 +8,8 @@ permalink: /devops/containers/kubernetes/kubeadm/minikube-ingress-nginx/
 
 # Пример Ingress в minikube (Nginx)
 
-Делаю: 24.04.2019
+Делаю:  
+24.04.2019
 
 <br/>
 

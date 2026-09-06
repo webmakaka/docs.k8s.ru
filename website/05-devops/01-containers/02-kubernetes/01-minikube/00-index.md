@@ -20,9 +20,9 @@ permalink: /devops/containers/kubernetes/minikube/
 
 ### Базовые вещи, чтобы ознакомиться как это все работает
 
-[Инсталляция kubectl ubuntu 20.04.1](//docs.k8s.ru/containers/kubernetes/tools/kubectl/)
+[Инсталляция kubectl ubuntu 20.04.1](/containers/kubernetes/tools/kubectl/)
 
-[Инсталляция и подготовка minikube для работы в ubuntu 20.04.1](//docs.k8s.ru//containers/kubernetes/minikube/setup/)
+[Инсталляция и подготовка minikube для работы в ubuntu 20.04.1](/containers/kubernetes/minikube/setup/)
 
 [Запуск приложения в minikube](/devops/containers/kubernetes/minikube/run-application/)
 
@@ -30,7 +30,7 @@ permalink: /devops/containers/kubernetes/minikube/
 
 ### Более продвинутые примеры
 
-[Предоставление внешним клиентам доступа к службам](/devops/containers/kubernetes/minikube/svc/)
+[Предоставление внешним клиентам доступа к службам](/basics/svc/)
 
 [Пример Ingress в minikube (Nginx)](/devops/containers/kubernetes/kubeadm/minikube-ingress-nginx/)
 

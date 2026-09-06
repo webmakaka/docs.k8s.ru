@@ -10,7 +10,7 @@ permalink: /devops/containers/kubernetes/metal-lb/
 
 <br/>
 
-Делаю:  
+**Делаю:**  
 14.01.2021
 
 <br/>

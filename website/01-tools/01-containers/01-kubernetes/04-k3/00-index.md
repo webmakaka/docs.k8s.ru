@@ -14,4 +14,4 @@ https://k3s.io/
 
 <br/>
 
-### [Инсталляция и подготовка K3s для работы в ubuntu 20.04](/tools/containers/kubernetes/K3s/setup/)
+### [Инсталляция и подготовка K3s для работы в ubuntu 20.04](/tools/containers/kubernetes/k3s/setup/)

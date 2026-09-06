@@ -108,7 +108,7 @@ OK!
 
 <br/>
 
-![Istio](/img/tools/containers/kubernetes/utils/service-mesh/istio/bookinfo/pic-01.png 'Istio'){: .center-image }
+![Istio](/img/tools/containers/kubernetes/tools/service-mesh/istio/bookinfo/pic-01.png 'Istio'){: .center-image }
 
 <br/>
 
