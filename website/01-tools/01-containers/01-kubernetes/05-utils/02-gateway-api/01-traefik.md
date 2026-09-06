@@ -8,7 +8,7 @@ permalink: /tools/containers/kubernetes/utils/gateway-api/traefik/
 
 # Traefik Gateway API for Kubernetes
 
-Делаю:  
+**Делаю:**  
 2026.02.06
 
 <br/>
@@ -112,7 +112,7 @@ To start enabling traffic to our newly created apps, we will start with installi
 
 Note that we use a Traefik Class in our example. </br>
 
-[Documentation](https://gateway-api.sigs.k8s.io/api-types/gatewayclass/)
+[Documentation](https://gateway-api.sigs.k8s.io/reference/api-types/gatewayclass/)
 
 `GatewayClass` is a cluster-scoped resource defined by the infrastructure provider. This resource represents a class of Gateways that can be instantiated. </br>
 
@@ -146,7 +146,7 @@ $ kubectl describe gatewayclass
 Next we need to install a Gateway that implements our Gateway Class </br>
 Note that we use a Traefik Gateway in our example. </br>
 
-[Documentation](https://gateway-api.sigs.k8s.io/api-types/gateway)
+[Documentation](https://gateway-api.sigs.k8s.io/reference/api-types/gateway/)
 
 This gateway lives in the same namespace as the routes and applications
 

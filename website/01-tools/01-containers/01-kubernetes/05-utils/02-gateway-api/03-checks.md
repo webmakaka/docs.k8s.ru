@@ -6,14 +6,14 @@ keywords: tools, containers, kubernetes, Gateway API, Traefik
 permalink: /tools/containers/kubernetes/utils/gateway-api/checks/
 ---
 
-Делаю:  
+**Делаю:**  
 2026.04.10
 
 <br/>
 
 ## Traffic Management Features: HTTP Routes
 
-[Documentation](https://gateway-api.sigs.k8s.io/api-types/httproute/)
+[Documentation](https://gateway-api.sigs.k8s.io/reference/api-types/httproute/)
 
 The important fields on HTTP Route we will cover:
 
@@ -32,7 +32,7 @@ Feature Table:
 | Route by Path           | [example](#route-by-path)                       |
 | Route using URL Rewrite | [example](#route-using-url-rewrite)             |
 | Header Modification     | [example](#requestresponse-header-manipulation) |
-| HTTPS & TLS             | [example](#https-and-tls)                       |
+| HTTPS & TLS             | example                                         |
 
 For traffic management, we can take a look at some basic HTTP routes.</br>
 

@@ -10,4 +10,4 @@ permalink: /devops/containers/kubernetes/monitoring/prometheus-and-grafana-test-
 
 <br/>
 
-Перенесено [сюда](//docs.k8s.ru/containers/kubernetes/tools/helm/monitoring/)
+Перенесено [сюда](/containers/kubernetes/tools/helm/monitoring/)

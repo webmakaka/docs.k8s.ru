@@ -4,25 +4,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>
-    {% if page.title and page.permalink != '/' %}{{ page.title }} | {{ site.title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    {% if page.title and page.permalink != '/' %}{{ page.title }} | {{
+    site.title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title
+    }}{% endif %}
   </title>
 
-  <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.keywords }}{% endif %}" />
+  <meta
+    name="description"
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+  />
+  <meta
+    name="keywords"
+    content="{% if page.keywords %}{{ page.keywords | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.keywords }}{% endif %}"
+  />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+  <meta
+    property="og:title"
+    content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
+  />
+  <meta
+    property="og:description"
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+  />
+  <meta
+    property="og:url"
+    content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+  />
+  <meta
+    property="og:type"
+    content="{% if page.layout == 'post' %}article{% else %}website{% endif %}"
+  />
   <meta property="og:site_name" content="{{ site.title }}" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:image" content="{{ site.url }}/apple-touch-icon.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+  <meta
+    name="twitter:title"
+    content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
+  />
+  <meta
+    name="twitter:description"
+    content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+  />
   <meta name="twitter:image" content="{{ site.url }}/apple-touch-icon.png" />
 
   <!-- Icons -->
@@ -32,29 +58,40 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Structured Data -->
-  <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "{{ site.title }}",
-    "url": "{{ site.url }}",
-    "description": "{{ site.description }}",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.google.com/search?as_sitesearch={{ site.url | remove: 'https://' | remove: 'http://' }}&q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "description": "{{ site.description }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.google.com/search?as_sitesearch={{ site.url | remove: 'https://' | remove: 'http://' }}&q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
-  }</script>
+  </script>
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" />
-  <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}" />
-  <link rel="stylesheet" href="{{ "/css/bootstrap.css" | prepend: site.baseurl }}" />
+  <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}"
+  /> <link rel="stylesheet" href="{{ "/css/bootstrap.css" | prepend:
+  site.baseurl }}" />
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+  <link
+    rel="canonical"
+    href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+  />
 
-  <link rel="search" href="//docs.k8s.ru/open-search.xml" type="application/opensearchdescription+xml" title="docs.k8s.ru" />
+  <link
+    rel="search"
+    href="https://docs.k8s.ru/open-search.xml"
+    type="application/opensearchdescription+xml"
+    title="docs.k8s.ru"
+  />
 
   <!-- No Google Analytics Anymore-->
 </head>
